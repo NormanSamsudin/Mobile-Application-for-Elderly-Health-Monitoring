@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+
+class Background extends StatelessWidget {
+  final Widget child;
+
+  Background(
+      {super.key,
+      required this.child,
+      this.topImage = 'lib/assets/images/main_top.png',
+      this.bottomImage = 'lib/assets/images/main_top.png'
+      });
+
+  final String topImage, bottomImage;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Image.asset(topImage, width: 120,),
+            ),
+              
+              Positioned(
+              bottom: 0,
+              right: 0,
+              child: Transform.rotate(
+                angle: 3.142,
+                child: Image.asset(bottomImage, width: 120, )),
+            ),
+            SafeArea(child: child),
+          ],
+        ),
+      ),
+    );
+  }
+}
